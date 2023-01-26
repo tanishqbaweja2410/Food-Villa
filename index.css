@@ -1,17 +1,16 @@
-*{
+* {
     margin: 0;
     padding: 0;
   }
   #container {
-      background-color: yellow;
+    background-color: yellow;
   }
   
   .header {
-      /* display: flex;
-      justify-content: space-between; */
-      margin-bottom: 10px;
-      /* border: 1px solid black; */
-      display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 10px;
+    /* border: 1px solid black; */
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
@@ -19,27 +18,27 @@
     /* box-shadow: 2px 2px 10px #ccc; */
   }
   
-  .logo{
-      width: 100px;
-      /* width: 50px;
+  .logo {
+    width: 100px;
+    /* width: 50px;
     height: 50px; */
     border-radius: 10px;
     box-shadow: 2px 2px 10px #ccc;
   }
   
   .nav-items {
-      display: flex;
+    display: flex;
     align-items: center;
   }
   
-  .nav-items > ul{
-      list-style-type: none;
-      display: flex;
+  .nav-items > ul {
+    list-style-type: none;
+    display: flex;
   }
   
-  .nav-items > ul > li{
-      padding: 10px;
-      margin-right: 10px;
+  .nav-items > ul > li {
+    padding: 10px;
+    margin-right: 10px;
     text-decoration: none;
     color: #333;
     font-weight: 600;
@@ -47,12 +46,12 @@
   }
   
   /* prev card css */
-  .card{
+  .card {
     /* border: 1px solid black; */
     /* width: 200px; */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
@@ -63,35 +62,37 @@
     overflow: hidden;
   }
   
-  .card > img{
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  .card > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
   }
   
   .card h1 {
-  /* font-size: 24px;
+    /* font-size: 24px;
   margin: 10px 0;
   text-align: center; */
-  font-size: 24px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 10px 0;
-  text-align: center;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 10px 0;
+    text-align: center;
   }
   
-  .card h3,h4 {
-  /* font-size: 18px;
+  .card h3,
+  h4 {
+    /* font-size: 18px;
   margin: 5px 0;
   text-align: center; */
-  font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  margin: 5px 0;
-  text-align: center;
+    font-size: 18.35px;
+    font-family: cursive;
+    font-weight: 400;
+    margin: 5px 0;
+    /* text-align: center; */
   }
+  
   
   /* new card css */
   /* .card {
@@ -125,13 +126,10 @@
     color: #555;
   } */
   
-  
-  
-  
-  .restaurantList{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+  .restaurantList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .searchContainer {
@@ -167,5 +165,110 @@
     background-color: #555;
   }
   
-    
-    
+  .login {
+    width: 10%;
+    padding: 12px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .login:hover {
+    background-color: #555;
+  }
+  
+  .cardListShimmer {
+    display: flex;
+  
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cardShimmer {
+    width: calc((100% - 60px) / 4);
+    /* margin-right: 20px; */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+  }
+  .cardShimmer:nth-child(4n) {
+    margin-right: 0;
+  }
+  .cardShimmer.is-loading .image,
+  .cardShimmer.is-loading h2,
+  .cardShimmer.is-loading p {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s loading linear infinite;
+    margin: 5px;
+  }
+  .cardShimmer.is-loading .image {
+    height: 200px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .cardShimmer.is-loading h2 {
+    height: 30px;
+  }
+  .cardShimmer.is-loading p {
+    height: 70px;
+  }
+  
+  @keyframes loading {
+    to {
+      background-position-x: -200%;
+    }
+  }
+  
+  ._3Mn31 {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+    font-size: 12px;
+    justify-content: space-between;
+    color: #535665;
+    width: 100%;
+  }
+  
+  ._9uwBC {
+    height: 20px;
+    width: 43px;
+    padding: 0 5px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+  
+  .wY0my {
+    background-color: #48c479;
+    color: #fff;
+  }
+  
+  ._537e4 {
+    font-size: 10px;
+    margin-right: 4px;
+    position: relative;
+    top: -1px;
+  }
+  
+  [class*=" icon-"], [class^=icon-] {
+    font-family: icomoon;
+    /* speak: none; */
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }

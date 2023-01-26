@@ -1,27 +1,7 @@
-// Planning
-/*
-  Header
-    - Logo(Title)
-    - Nav Items 
-    - Cart
-  Body
-    - Search Bar
-    - RestaurantList
-      - RestaurantCard
-        - Image
-        - Name
-        - Rating 
-        - Cuisines
-  Footer
-    - Links
-    - Copyright
-
-
-*/
-
 export const IMG_CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
+// Config Driven UI
 export const restaurantList = [
   {
     type: "restaurant",

@@ -1,21 +1,32 @@
 import { IMG_CDN_URL } from "../constants";
 
-const RestaurantCard = ({ cloudinaryImageId, name, cuisines, avgRating }) => {
+const RestaurantCard = ({ cloudinaryImageId, name, cuisines, avgRating, slaString, costForTwoString }) => {
   return (
-    // previous
     <div className="card">
       <img src={IMG_CDN_URL + cloudinaryImageId} alt="" />
-      <h2>{name}</h2>
+      <h2 style={{"margin": "10px", "margin-left": 0}}>{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
-      <h4>{avgRating} stars</h4>
+      {/* <h4>{avgRating} stars</h4> */}
+      <div class="_3Mn31">
+        <div class="_9uwBC wY0my">
+          <span class="icon-star _537e4">&nbsp;★</span>
+          <span>{avgRating}</span>
+        </div>
+        <div>•</div>
+        <div>{slaString}</div>
+        <div>•</div>
+        <div class="nVWSi">{costForTwoString}</div>
+      </div>
     </div>
-
-    // new
-    // <div className="card">
-    //   <img src={IMG_CDN_URL + cloudinaryImageId} alt="" />
-    //   <h2>{name}</h2>
-    //   <p>{cuisines.join(", ")}</p>
-    //   <p>{avgRating} stars</p>
+    // <div className="card-inner-container">
+    //   <img className="card-image" src={IMG_CDN_URL + cloudinaryImageId} alt={name} />
+    //   <div className="card-info-container">
+    //     <h3 className="card-name">{name}</h3>
+    //     <p className="card-cuisines">{cuisines.join(", ")}</p>
+    //     <div className="card-rating-container">
+    //       <p className="card-rating-text">{avgRating}</p>
+    //     </div>
+    //   </div>
     // </div>
   );
 };
