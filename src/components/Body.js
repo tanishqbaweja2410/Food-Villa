@@ -3,34 +3,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom"
 import { filterData } from "../utils/helper";
+import useFilterRestaurants from "../utils/useFilterRestaurants";
 
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [allRestaurants, setAllRestaurants] = useState([]);
-
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
-  async function getRestaurants() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6389315&lng=77.08668109999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-  }
-
-  // console.log("render");
-
-  // Conditional Rendering
-  // if restraunt is empty -› shimmer Ui
-  // if restraunt has data =› actual data UI
-
-  // Early Return
+  const {allRestaurants, filteredRestaurants, setFilteredRestaurants} = useFilterRestaurants();
+  
   if (!allRestaurants) return null;
 
   return allRestaurants.length === 0 ? (
