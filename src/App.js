@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
 
 // ------------------ Composing Components ------------------------------->
 
@@ -40,6 +41,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
         errorElement: <Error />,
       },
       {
