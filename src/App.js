@@ -5,19 +5,28 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
-import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
+import { lazy, Suspense } from "react";
+import Shimmer from "./components/Shimmer";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 // ------------------ Composing Components ------------------------------->
+
+const About = lazy(() => import("./components/About"));
+const Help = lazy(() => import("./components/Help"));
 
 const AppLayout = () => {
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <Provider store={store}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Provider>
     </>
   );
 };
@@ -35,7 +44,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        ),
         errorElement: <Error />,
       },
       {
@@ -51,6 +64,20 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/help",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Help />
+          </Suspense>
+        ),
+        errorElement: <Error />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
         errorElement: <Error />,
       },
     ],

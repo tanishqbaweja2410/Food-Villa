@@ -2,24 +2,28 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import RestaurantDetails from "./RestaurantDetails";
+import RestaurantDishes from "./RestaurantDishes";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const restaurant = useRestaurant(resId);
+  const restaurantInfo = restaurant?.cards[0]?.card?.card?.info;
+  let restaurantMenuItems = restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  if(restaurantMenuItems === undefined) {
+    restaurantMenuItems = restaurant?.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  }
+  // console.log(restaurant);
 
-  return !restaurant ? (
+  
+
+  return !restaurantInfo ? (
     <Shimmer />
   ) : (
     <div className="menu grid grid-cols-3 gap-x-10 gap-y-5 font-poppins">
-      <div className="heading col-span-3 bg-gray-800 text-white mb-8 py-20 text-center grid-cols-1 sm:grid-cols-none">
-        <h1 className="font-medium text-2xl sm:text-3xl lg:text-4xl mb-2">
-          {restaurant.name}
-        </h1>
-        <h3 className="font-bold text-lg sm:text-xl lg:text-2xl">
-          &mdash; MENU &mdash;
-        </h3>
-      </div>
-      {Object.values(restaurant?.menu?.items).map((item) => (
+      <RestaurantDetails restaurantInfo={restaurantInfo}/>
+      <RestaurantDishes restaurantMenuItems={restaurantMenuItems}/>
+      {/* {Object.values(restaurant?.menu?.items).map((item) => (
         <div
           key={item.id}
           className="food-items col-span-1 relative rounded-2xl shadow-md overflow-hidden mx-5 h-[464px]"
@@ -46,9 +50,10 @@ const RestaurantMenu = () => {
             </button>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
 
 export default RestaurantMenu;
+
